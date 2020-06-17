@@ -18,10 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('login', 'UserController@login');
+Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
 
 Route::middleware(['auth:api'])->group(function () {
     Route::get('allproduct', 'product\ShowProductController@showAllProduct');
+    Route::post('pulsa', 'ProductRequest@requestProductPulsa');
+    Route::post('game', 'ProductRequest@requestProductGame');
 });
 
